@@ -19,23 +19,23 @@ class ProductManager {
 	/**
 	 * 
 	 * 
-	 * @param {string} nombre 
+	 * @param {string} Title
 	 * @param {string} lugar
 	 * @param {number} precio 
 	 * 
 	 * @param {number} stock 
 	 * @param {Date} fecha 
 	 */
-	addProducts(nombre, lugar ,precio, stock = 100, fecha = new Date()) {
-		let filtro = this.products.filter((event) => event.nombre === nombre);
+	addProducts(Title, description ,precio, stock = 200, fecha = new Date()) {
+		let filtro = this.products.filter((event) => event.Title === Title);
 		if (filtro.length > 0) {
 			console.log('El nombre del Producto ya existe');
 			return;
 		}
 
 		const product = {
-			lugar,
-			nombre,
+			description,
+			Title,
 			precio: precio + precio * this.#precioBaseGanancia, 
 			stock,
 			fecha,
@@ -63,7 +63,7 @@ class ProductManager {
 	 * @returns 
 	 */
 	/*idProductos*/
-	agregarProductos(idProducts, idProductos) {
+	getProductosById(idProducts, idProductos) {
 		
 		const productIndex = this.products.findIndex(
 			(product) => product.id === idProducts
@@ -111,7 +111,7 @@ class ProductManager {
 		
 		const newProduct = {
 			...product,
-			lugar: nuevaLocalidad ?? product.lugar,
+			lugar: nuevaLocalidad ?? product.description,
 			fecha: nuevaFecha ?? product.fecha,
 			id: this.#getID(), 
 			participantes: [], 
@@ -123,14 +123,14 @@ class ProductManager {
 }
 
 const productMananager = new ProductManager ();
-productMananager.addProducts('Juguetes', 'Jugueteria Kids', 200, 50);
-productMananager.agregarProductos(1, 1);
-productMananager.agregarProductos(1, 685);
-productMananager.addProducts('Juguetes', 'Jugueteria Kids', 200, 50);
-productMananager.addProducts('Juguetes', 'Jugueteria Kids', 200, 50);
-productMananager.agregarProductos(2, 927);
-productMananager.agregarProductos(2, 10);
-productMananager.agregarProductos(2, 859);
+productMananager.addProducts('producto prueba', 'Este es un producto prueba', 200, 25);
+productMananager.getProductosById(1, 1);
+productMananager.getProductosById(1, 685);
+productMananager.addProducts('producto prueba', 'Este es un producto prueba', 200, 25);
+productMananager.addProducts('producto prueba', 'Este es un producto prueba', 200, 25);
+productMananager.getProductosById(2, 927);
+productMananager.getProductosById(2, 10);
+productMananager.getProductosById(2, 859);
 
 console.log(productMananager.getProducts());
 
