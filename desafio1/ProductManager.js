@@ -63,7 +63,7 @@ class ProductManager {
 	 * @returns 
 	 */
 	/*idProductos*/
-	agregarProductos(idProducts, idProductos) {
+	getProductosById(idProducts, idProductos) {
 		
 		const productIndex = this.products.findIndex(
 			(product) => product.id === idProducts
@@ -124,13 +124,13 @@ class ProductManager {
 
 const productMananager = new ProductManager ();
 productMananager.addProducts('producto prueba', 'Este es un producto prueba', 200, 25);
-productMananager.agregarProductos(1, 1);
-productMananager.agregarProductos(1, 685);
+productMananager.getProductosById(1, 1);
+productMananager.getProductosById(1, 685);
 productMananager.addProducts('producto prueba', 'Este es un producto prueba', 200, 25);
 productMananager.addProducts('producto prueba', 'Este es un producto prueba', 200, 25);
-productMananager.agregarProductos(2, 927);
-productMananager.agregarProductos(2, 10);
-productMananager.agregarProductos(2, 859);
+productMananager.getProductosById(2, 927);
+productMananager.getProductosById(2, 10);
+productMananager.getProductosById(2, 859);
 
 console.log(productMananager.getProducts());
 
