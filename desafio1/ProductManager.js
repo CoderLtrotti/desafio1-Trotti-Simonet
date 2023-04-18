@@ -19,15 +19,15 @@ class ProductManager {
 	/**
 	 * 
 	 * 
-	 * @param {string} Title
-	 * @param {string} lugar
+	 * @param {string} title
+	 * @param {string} description:
 	 * @param {number} precio 
 	 * 
 	 * @param {number} stock 
 	 * @param {Date} fecha 
 	 */
-	addProducts(Title, description ,precio, stock = 200, fecha = new Date()) {
-		let filtro = this.products.filter((event) => event.Title === Title);
+	addProducts(title, description ,precio, stock = 100, fecha = new Date()) {
+		let filtro = this.products.filter((event) => event.title === title);
 		if (filtro.length > 0) {
 			console.log('El nombre del Producto ya existe');
 			return;
@@ -35,7 +35,7 @@ class ProductManager {
 
 		const product = {
 			description,
-			Title,
+			title,
 			precio: precio + precio * this.#precioBaseGanancia, 
 			stock,
 			fecha,
@@ -63,7 +63,7 @@ class ProductManager {
 	 * @returns 
 	 */
 	/*idProductos*/
-	getProductosById(idProducts, idProductos) {
+	agregarProductos(idProducts, idProductos) {
 		
 		const productIndex = this.products.findIndex(
 			(product) => product.id === idProducts
@@ -111,7 +111,7 @@ class ProductManager {
 		
 		const newProduct = {
 			...product,
-			lugar: nuevaLocalidad ?? product.description,
+			lugar: nuevaLocalidad ?? product.lugar,
 			fecha: nuevaFecha ?? product.fecha,
 			id: this.#getID(), 
 			participantes: [], 
@@ -124,13 +124,13 @@ class ProductManager {
 
 const productMananager = new ProductManager ();
 productMananager.addProducts('producto prueba', 'Este es un producto prueba', 200, 25);
-productMananager.getProductosById(1, 1);
-productMananager.getProductosById(1, 685);
+productMananager.agregarProductos(1, 1);
+productMananager.agregarProductos(1, 685);
 productMananager.addProducts('producto prueba', 'Este es un producto prueba', 200, 25);
 productMananager.addProducts('producto prueba', 'Este es un producto prueba', 200, 25);
-productMananager.getProductosById(2, 927);
-productMananager.getProductosById(2, 10);
-productMananager.getProductosById(2, 859);
+productMananager.agregarProductos(2, 927);
+productMananager.agregarProductos(2, 10);
+productMananager.agregarProductos(2, 859);
 
 console.log(productMananager.getProducts());
 
