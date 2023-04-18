@@ -29,7 +29,7 @@ class ProductManager {
 	addProducts(nombre, lugar ,precio, stock = 100, fecha = new Date()) {
 		let filtro = this.products.filter((event) => event.nombre === nombre);
 		if (filtro.length > 0) {
-			console.log('El nombre del evento ya existe');
+			console.log('El nombre del Producto ya existe');
 			return;
 		}
 
@@ -71,7 +71,7 @@ class ProductManager {
 
 		
 		if (productIndex === -1) {
-			console.log('No existe el producto');
+			console.log('No existe el Producto');
 			return; 
 		}
 
@@ -80,7 +80,7 @@ class ProductManager {
 
 		
 		if (product.participantes.includes(idProductos)) {
-			console.log('El productoo ya esta agregado');
+			console.log('El producto ya esta agregado');
 			return; 
 		}
 
@@ -103,7 +103,7 @@ class ProductManager {
 
 	
 		if (productIndex === -1) {
-			console.log('No existe el evento');
+			console.log('No existe el Producto');
 			return; o
 		}
 
